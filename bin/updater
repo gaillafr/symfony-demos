@@ -1,0 +1,38 @@
+#!/bin/sh
+
+if [ $# != 1 ]; then
+    echo "usage: $0 <filename>"
+    exit;
+fi
+
+branches=$(git for-each-ref --format='%(refname:short)' refs/heads/\*)
+curr_branch=$(git rev-parse --abbrev-ref HEAD)
+
+filename=$1
+file_in_repo=$(git ls-files "$filename")
+
+if [ ! "$file_in_repo" ]; then
+    echo "file not added in current branch"
+    exit
+fi
+
+if [ "master" != "$curr_branch" ]; then
+    git checkout master
+    git checkout "$curr_branch" -- "$filename"
+    git add "$filename"
+    git commit --amend --no-edit
+    echo ""
+fi
+
+for branch in $branches; do
+    if [ "$branch" != "master" ]; then
+        git checkout "$branch"
+        git rebase master
+        git rebase --skip
+        echo ""
+    fi
+done
+
+git checkout "${curr_branch}"
+
+git push -f --all

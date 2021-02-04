@@ -1,0 +1,27 @@
+includes:
+    - phpstan-baseline.neon
+    - vendor/phpstan/phpstan-deprecation-rules/rules.neon
+    - vendor/phpstan/phpstan-doctrine/extension.neon
+    - vendor/phpstan/phpstan-symfony/extension.neon
+    - vendor/phpstan/phpstan-phpunit/extension.neon
+    - vendor/phpstan/phpstan-phpunit/rules.neon
+    - vendor/phpstan/phpstan-strict-rules/rules.neon
+    - vendor/thecodingmachine/phpstan-strict-rules/phpstan-strict-rules.neon
+    - vendor/slam/phpstan-extensions/conf/slam-rules.neon
+
+services:
+
+parameters:
+    level: max
+    paths:
+        - src
+        - tests
+    symfony:
+        container_xml_path: '%currentWorkingDirectory%/var/cache/dev/App_KernelDevDebugContainer.xml'
+    reportUnmatchedIgnoredErrors: true
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false
+    excludes_analyse:
+        - '%rootDir%/../../../src/Kernel.php'
+        - '%rootDir%/../../../tests/bootstrap.php'
+    ignoreErrors:
