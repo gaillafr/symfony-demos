@@ -4,42 +4,21 @@
     {{ parent() }} | Home
 {% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/_home.css') }}">
+{% endblock %}
+
 {% block body %}
-<style>
-    html, body {
-        height: 100%;
-    }
-
-    body {
-        margin: 0;
-    }
-
-    .flex-container {
-        height: 100%;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .row {
-        width: auto;
-    }
-
-    .flex-item {
-        line-height: 20px;
-        font-weight: bold;
-        font-size: 2em;
-        text-align: center;
-    }
-</style>
-
 <div class="flex-container">
     <div class="row">
         <div class="flex-item">
             <h1>Welcome on Symfony Demos!</h1>
+            <p>Today is <span id="today-date"></span></p>
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/today-date.js') }}" type="text/javascript"></script>
 {% endblock %}
