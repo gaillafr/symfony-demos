@@ -29,3 +29,11 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    _instanceof:
+        App\Contract\DataTransformerInterface:
+            tags: [ 'app.data_transformer' ]
+
+    App\Service\DataTransformer:
+        arguments:
+            - !tagged_iterator app.data_transformer
