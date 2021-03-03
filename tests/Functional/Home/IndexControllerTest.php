@@ -15,5 +15,6 @@ class IndexControllerTest extends WebTestCase
 
         self::assertResponseIsSuccessful();
         self::assertSelectorTextContains('h1', 'Welcome on Symfony Demos!');
+        self::assertSelectorTextContains('p', 'Current public IP is: 0.0.0.0');
     }
 }

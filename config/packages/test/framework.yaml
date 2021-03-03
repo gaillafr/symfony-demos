@@ -2,3 +2,10 @@ framework:
     test: true
     session:
         storage_id: session.storage.mock_file
+
+    http_client:
+        scoped_clients:
+            ifconfigTest:
+                base_uri: 'https://ifconfig.co/'
+                headers:
+                    Accept: 'application/json'
