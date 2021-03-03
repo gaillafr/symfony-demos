@@ -15,3 +15,10 @@ framework:
     #fragments: true
     php_errors:
         log: true
+
+    http_client:
+        scoped_clients:
+            ifconfig:
+                base_uri: 'https://ifconfig.co/'
+                headers:
+                    Accept: 'application/json'

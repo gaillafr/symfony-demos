@@ -39,6 +39,13 @@
     <div class="row">
         <div class="flex-item">
             <h1>Welcome on Symfony Demos!</h1>
+
+            {% if error is not null %}
+                <p>{{ error }}</p>
+            {% else %}
+                <p>Current public IP is: {{ ip }}</p>
+            {% endif %}
+            <p></p>
         </div>
     </div>
 </div>
