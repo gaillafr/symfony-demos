@@ -1,2 +1,5 @@
 parameters:
     ignoreErrors:
+        -
+            message: '#^Property App\\Command\\.*\:\:\$defaultDescription has no typehint specified#'
+            path: src/Command/*

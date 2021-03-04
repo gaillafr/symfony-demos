@@ -14,7 +14,15 @@ services:
         volumes:
             - $PWD:/var/www/html
 
-    mariadb:
+    local:
+        image: mariadb
+        environment:
+            MYSQL_ROOT_PASSWORD: password
+            MYSQL_DATABASE: database
+            MYSQL_USER: user
+            MYSQL_PASSWORD: password
+
+    remote:
         image: mariadb
         environment:
             MYSQL_ROOT_PASSWORD: password
